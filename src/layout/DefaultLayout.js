@@ -1,7 +1,12 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import { AppContent, AppSidebar, AppFooter, AppHeader } from '../components/index'
+import { IsLogin, IsRefreshTokenExpire } from '../common/apiHelper'
 
 const DefaultLayout = () => {
+  if (!IsLogin() || IsRefreshTokenExpire()) {
+    return <Redirect from="/" to="/login" />
+  }
   return (
     <div>
       <AppSidebar />

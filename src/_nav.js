@@ -11,6 +11,7 @@ import {
   cilPuzzle,
   cilSpeedometer,
   cilStar,
+  cilLockLocked,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -25,6 +26,48 @@ const _nav = [
       text: 'NEW',
     },
   },
+  {
+    component: CNavItem,
+    name: 'Çıkış',
+    to: '/logout',
+    icon: <CIcon icon={cilLockLocked} customClassName="nav-icon" />,
+  },
+  // {
+  //   _tag: "CSidebarNavItem",
+  //   name: "Müşteri",
+  //   to: "/customers",
+  //   icon: "cil-people",
+  // },
+  // {
+  //   _tag: "CSidebarNavItem",
+  //   name: "Sigorta",
+  //   to: "/insurances",
+  //   icon: "cil-euro",
+  // },
+  // // {
+  // //   _tag: "CSidebarNavItem",
+  // //   name: "Hesap",
+  // //   to: "/accounts",
+  // //   icon: "cil-calculator",
+  // // },
+  // {
+  //   _tag: "CSidebarNavItem",
+  //   name: "Ayarlar",
+  //   to: "/settings",
+  //   icon: "cil-settings",
+  // },
+  // {
+  //   _tag: "CSidebarNavItem",
+  //   name: "Admin",
+  //   to: "/admin",
+  //   icon: "cil-settings",
+  // },
+  // {
+  //   _tag: "CSidebarNavItem",
+  //   name: "Çıkış",
+  //   to: "/logout",
+  //   icon: "cil-lock-locked",
+  // },
   {
     component: CNavTitle,
     name: 'Theme',
