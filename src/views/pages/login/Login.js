@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
+  CContainer,
   CButton,
   CCard,
   CCardBody,
   CCardGroup,
   CCol,
-  CContainer,
   CForm,
   CFormInput,
   CInputGroup,
@@ -32,11 +32,11 @@ const Login = () => {
 
   const loginUser = (loginData) => {
     localStorage.setItem('accessToken', loginData.access_token)
-    //localStorage.setItem('refreshToken', loginData.refresh_token)
+    localStorage.setItem('refreshToken', 'loginData.refresh_token')
     localStorage.setItem('tokenCreatedTime', new Date())
     localStorage.setItem('isLogin', true)
-    // localStorage.setItem('loginUserId', loginData.user._id)
-    // localStorage.setItem('loginUserRole', loginData.user.role)
+    localStorage.setItem('loginUserId', 'loginData.user._id')
+    localStorage.setItem('loginUserRole', 'loginData.user.role')
   }
 
   const handleKeyDown = (event) => {

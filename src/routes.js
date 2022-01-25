@@ -51,7 +51,7 @@ const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const Logout = React.lazy(() => import('./views/pages/logout/Logout'))
-// const Customers = React.lazy(() => import("./views/customers/Customers"));
+const Customers = React.lazy(() => import('./views/customers/Customers'))
 // const Insurances = React.lazy(() => import("./views/insurances/Insurances"));
 // const Accounts = React.lazy(() => import("./views/accounts/Accounts"));
 // const Settings = React.lazy(() => import("./views/settings/Settings"));
@@ -61,12 +61,11 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/logout', name: 'Logout', component: Logout },
-  // { path: "/customers", exact: true, name: "Customers", component: Customers },
+  { path: '/customers', exact: true, name: 'Customers', component: Customers },
   // { path: "/insurances", exact: true, name: "Insurances", component: Insurances },
   // { path: "/accounts", exact: true, name: "Accounts", component: Accounts },
   // { path: "/settings", exact: true, name: "Settings", component: Settings },
   // { path: "/admin", exact: true, name: "Admin", component: Admin },
-
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },
