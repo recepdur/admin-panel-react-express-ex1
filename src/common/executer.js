@@ -1,41 +1,48 @@
 import { GenerateEndpointUrl } from './apiHelper'
-import { ACCESS_TOKEN_EXPIRED_MINUTE } from './constants'
+import { ACCESS_TOKEN_EXPIRED_MINUTE, API_BASE_URL } from './constants'
 import { GetMinutesBetweenTwoDates } from './utilitys'
 //import { useHistory } from 'react-router-dom'
 const axios = require('axios')
 
-export function CallApi(url, method, data, isPublic) {
+export function CallApi(urlPath, method, data, isPublic) {
   return new Promise(async (resolve, reject) => {
-    const token = await getToken(isPublic)
-    var apiConfig = {
-      method: method,
-      headers: { authorization: 'Bearer ' + token.accessToken, 'X-CSRF-TOKEN': 'token.content' },
-      url: GenerateEndpointUrl(url),
-      data: data,
-      //xsrfCookieName: 'XSRF-TOKEN',
-      //xsrfHeaderName: 'X-XSRF-TOKEN',
-      xsrfHeaderName: 'X-CSRF-Token',
-      //withCredentials: true,
-    }
+    // const headers = {
+    //   'Content-Type': 'application/json',
+    //   Authorization: 'Bearer ' + token.accessToken,
+    // }
+    // xsrfCookieName: 'XSRF-TOKEN',
+    // xsrfHeaderName: 'X-XSRF-TOKEN',
+    // xsrfHeaderName: 'X-CSRF-Token',
 
-    //axios.defaults.withCredentials = true
-    axios(apiConfig)
-      .then(function (response) {
-        const apiResponseresult = {
-          HTTPStatus: true,
-          HTTPStatusCode: response.status,
-          HTTPData: response.data,
-        }
-        resolve(apiResponseresult)
-      })
-      .catch(function (error) {
-        const apiResponseresult = {
-          HTTPStatus: false,
-          HTTPStatusCode: error.response.status,
-          HTTPData: error.response.data,
-        }
-        resolve(apiResponseresult)
-      })
+    const token = await getToken(isPublic)
+    axios.defaults.baseURL = API_BASE_URL
+    axios.defaults.withCredentials = true
+    axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token.accessToken
+
+    axios.get('/sanctum/csrf-cookie').then((responseCSRF) => {
+      console.log(responseCSRF)
+      axios
+        .post(urlPath, data)
+        .then((response) => {
+          console.log(response)
+          const apiResponseresult = {
+            HTTPStatus: true,
+            HTTPStatusCode: response.status,
+            HTTPData: response.data,
+          }
+          resolve(apiResponseresult)
+        })
+        .catch((error) => {
+          console.log(error)
+          const apiResponseresult = {
+            HTTPStatus: false,
+            HTTPStatusCode: error.response.status,
+            HTTPData: error.response.data,
+          }
+          resolve(apiResponseresult)
+        })
+    })
   })
 }
 

@@ -1,0 +1,115 @@
+@apiurl_2 = http://localhost:8000/api
+@apiurl_1 = https://crm-laravel-api.herokuapp.com/api
+@access_token = {{login.response.body.$.data.access_token}}
+
+###
+GET {{apiurl_1}}
+Content-Type: application/json
+
+###
+# @name login
+POST {{apiurl_1}}/login
+Content-Type: application/json
+
+{  
+    "email": "recep_1@gmail.com",
+    "password": "123456"
+}
+
+###
+POST {{apiurl_1}}/customers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+# {
+#     "methodName": "SelectByColumns",
+#     "data": {
+#         "userId":"1111"
+#          //"isActive" : false
+#     }
+# }
+
+###
+POST {{apiurl_1}}/customers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{   
+    "methodName": "SelectCustomerStatistics",
+    "data": {
+        "userId":"1111",
+        "isActive" : true,
+        "chartNo": 1 
+    }
+}
+
+
+###
+POST {{apiurl_1}}/customers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{   
+    "methodName": "TransferRecords",
+    "data": {
+        "userId":"1111" 
+    }
+}
+
+###
+POST {{apiurl_1}}/register
+Content-Type: application/json 
+
+{ 
+    "name" :"Recep 1", 
+    "email": "recep_1@gmail.com",
+    "password": "123456",
+    "confirm_password": "123456"
+}
+
+###
+GET {{apiurl_1}}/customers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+###
+GET {{apiurl_1}}/customers/1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+###
+POST {{apiurl_1}}/customers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    "first_name": "Ali",
+    "last_name": "Veli",
+    "phone": "5441234567",
+    "email": "ali@gmail.com",
+    "tc_no": "123456789012"
+}
+
+###
+PUT {{apiurl_1}}/customers/1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+     "first_name": "Ali 2"
+}
+
+###
+DELETE  {{apiurl_1}}/customers/1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+###
+GET {{apiurl_1}}/insurances
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+###
+GET {{apiurl_1}}/insurances/1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}

@@ -49,7 +49,7 @@ const Login = () => {
     setIsOpenProgress(true)
     setErrorText('')
     let data = { email: email, password: password }
-    execute('/login', 'POST', data, true, (response) => {
+    execute('/api/login', 'POST', data, true, (response) => {
       if (response.success) {
         loginUser(response.data)
         window.location.href = '/'

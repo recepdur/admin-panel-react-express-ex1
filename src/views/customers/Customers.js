@@ -121,7 +121,7 @@ const Customers = () => {
 
   const getCustomerList = async (isAct) => {
     setDetails([])
-    getCustomerStatistics(isAct)
+    //getCustomerStatistics(isAct)
     setProgressVisible(true)
     const cusData = {
       methodName: 'SelectByColumns',
@@ -130,7 +130,7 @@ const Customers = () => {
         isActive: isAct,
       },
     }
-    execute('/customers', 'POST', cusData, false, (response) => {
+    execute('/api/customers', 'POST', cusData, false, (response) => {
       if (response.status) {
         setCustomerList(response.data)
       } else {
@@ -149,7 +149,7 @@ const Customers = () => {
         isActive: isAct,
       },
     }
-    execute('/customers', 'POST', insurData, false, (response) => {
+    execute('/api/customers', 'POST', insurData, false, (response) => {
       if (response.status) {
         if (response.data && response.data[0]) setCusStatis(response.data[0])
         else setCusStatis({})
