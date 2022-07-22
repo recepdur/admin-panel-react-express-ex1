@@ -35,6 +35,12 @@ const _nav = [
   },
   {
     component: CNavItem,
+    name: 'Müşteri2',
+    to: '/customers2',
+    icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
     name: 'Çıkış',
     to: '/logout',
     icon: <CIcon icon={cilLockLocked} customClassName="nav-icon" />,
@@ -75,6 +81,7 @@ const _nav = [
   //   to: "/logout",
   //   icon: "cil-lock-locked",
   // },
+  /*
   {
     component: CNavTitle,
     name: 'Theme',
@@ -343,6 +350,7 @@ const _nav = [
       },
     ],
   },
+  */
 ]
 
 export default _nav

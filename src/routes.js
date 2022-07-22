@@ -52,6 +52,7 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const Logout = React.lazy(() => import('./views/pages/logout/Logout'))
 const Customers = React.lazy(() => import('./views/customers/Customers'))
+const Customers2 = React.lazy(() => import('./views/customers/Customers2'))
 // const Insurances = React.lazy(() => import("./views/insurances/Insurances"));
 // const Accounts = React.lazy(() => import("./views/accounts/Accounts"));
 // const Settings = React.lazy(() => import("./views/settings/Settings"));
@@ -62,6 +63,7 @@ const routes = [
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/logout', name: 'Logout', component: Logout },
   { path: '/customers', exact: true, name: 'Customers', component: Customers },
+  { path: '/customers2', exact: true, name: 'Customers2', component: Customers2 },
   // { path: "/insurances", exact: true, name: "Insurances", component: Insurances },
   // { path: "/accounts", exact: true, name: "Accounts", component: Accounts },
   // { path: "/settings", exact: true, name: "Settings", component: Settings },

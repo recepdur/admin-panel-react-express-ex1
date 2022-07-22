@@ -131,7 +131,7 @@ const Customers = () => {
       },
     }
     execute('/api/customers', 'POST', cusData, false, (response) => {
-      if (response.status) {
+      if (response.success) {
         setCustomerList(response.data)
       } else {
         callAlert(response.message, 3, 'danger')
